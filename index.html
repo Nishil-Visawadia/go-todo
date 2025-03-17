@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
     <title>Todo List</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,8 +16,8 @@
         <h1>Todo List</h1>
 
         <div class="todo-input">
-            <input type="text" id="task" placeholder="Enter a new task">
-            <button onclick="addTodo()">Add Todo</button>
+            <input type="text" id="task" placeholder="Add a new task..." autocomplete="off">
+            <button onclick="addTodo()">+</button>
         </div>
 
         <ul id="todo-list">

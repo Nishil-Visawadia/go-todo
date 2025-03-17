@@ -1,5 +1,156 @@
+basePath: /
+definitions:
+  main.DeleteResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  main.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  main.Todo:
+    description: Todo represents a task in the list
+    properties:
+      id:
+        description: The ID of the todo task
+        type: integer
+      status:
+        description: 'Status of the task: "pending", "completed"'
+        type: string
+      task:
+        description: The name or description of the task
+        type: string
+    type: object
 info:
-  contact: {}
-  description: Todo represents a task in the list
-paths: {}
+  contact:
+    email: your-email@example.com
+    name: Your Name
+    url: https://yourwebsite.com
+  description: This is a simple API to manage a Todo list
+  title: Todo API
+  version: "1.0"
+paths:
+  /todos:
+    get:
+      consumes:
+      - application/json
+      description: Get all todos from the list
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Todo'
+            type: array
+      summary: Get all todos
+      tags:
+      - Todo
+    post:
+      consumes:
+      - application/json
+      description: Create a new todo task
+      parameters:
+      - description: Create new todo
+        in: body
+        name: todo
+        required: true
+        schema:
+          $ref: '#/definitions/main.Todo'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Create a new todo
+      tags:
+      - Todo
+  /todos/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a todo task by its ID
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.DeleteResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Delete a todo by its ID
+      tags:
+      - Todo
+    get:
+      consumes:
+      - application/json
+      description: Get a todo by its ID
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Todo'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Get a todo by ID
+      tags:
+      - Todo
+    put:
+      consumes:
+      - application/json
+      description: Update the status of a todo task
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Todo
+        in: body
+        name: todo
+        required: true
+        schema:
+          $ref: '#/definitions/main.Todo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Todo'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Update the status of a todo
+      tags:
+      - Todo
 swagger: "2.0"

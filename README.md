@@ -9,7 +9,7 @@ To install the required packages and run the project, follow these steps:
 1. Clone the repository:
 
     ```cmd
-    git clone https://github.com/yourusername/go-todo.git
+    git clone https://github.com/Nishil-Visawadia/go-todo.git
     cd go-todo
     ```
 
@@ -28,6 +28,10 @@ To install the required packages and run the project, follow these steps:
 ## Usage
 
 After running the project, you can access the application at `http://localhost:8080`.
+
+## Docs
+
+For API documentation, visit `http://localhost:8080/docs`.
 
 ## Contributing
 

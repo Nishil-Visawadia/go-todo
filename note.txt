@@ -1,0 +1,10 @@
+# Install required Go packages
+go get ./...
+
+# Other commands for manual installation
+go mod init todo
+go get -u github.com/gin-gonic/gin
+go get -u github.com/gin-contrib/cors
+go install github.com/swaggo/swag/cmd/swag@latest
+go get github.com/swaggo/swag@latest
+swag init #to generate docs and swagger.json
